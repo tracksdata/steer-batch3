@@ -1,0 +1,39 @@
+package com;
+
+class Sample{
+	
+	void testMethod() {
+		
+	}
+}
+
+public class Test {
+	
+	void f2() {
+		
+	}
+	static void f3() {
+		
+	}
+	final void f4() {
+		
+	}
+	
+	void f1() {
+		// Create object to Test :? 
+		Test t=new Test(); // why?
+		
+	}
+	
+	
+	public static void main(String[] args) {
+
+		// Create object to Test
+		
+		Test t=new Test(); // to access non static methods from static method
+		
+		
+		
+	}
+
+}

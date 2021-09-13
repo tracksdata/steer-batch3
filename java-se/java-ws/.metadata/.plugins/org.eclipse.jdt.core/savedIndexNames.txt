@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+/Users/praveen/Training/Xoriant/steer-batch3/java-se/java-ws/.metadata/.plugins/org.eclipse.jdt.core
+349280044.index
+1957540857.index
+3053228663.index

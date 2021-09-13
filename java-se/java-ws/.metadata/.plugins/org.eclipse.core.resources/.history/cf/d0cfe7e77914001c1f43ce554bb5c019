@@ -1,0 +1,16 @@
+package com;
+
+public class Account {
+	
+	CardAccount cardObj=new CardAccount();
+	
+	public void info(Customer cust) {
+		System.out.println(">> Account:: info for "+cust.getCustName());
+		// apply credit card
+ 
+		cardObj.openCardAccount(cust);
+		
+		
+	}
+
+}

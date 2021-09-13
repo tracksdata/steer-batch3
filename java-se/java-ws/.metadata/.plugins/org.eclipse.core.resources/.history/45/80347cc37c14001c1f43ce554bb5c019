@@ -1,0 +1,15 @@
+package com;
+
+public class Paper {
+	
+	private String subject;
+
+	public Paper(String subject) {
+		super();
+		this.subject = subject;
+	}
+	
+	
+	
+
+}

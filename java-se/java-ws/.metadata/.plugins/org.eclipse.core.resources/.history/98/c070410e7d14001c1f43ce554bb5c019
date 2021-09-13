@@ -1,0 +1,13 @@
+package com;
+
+public class Exam {
+
+	private Paper paper;
+
+	public Exam(Paper paper) {
+		System.out.println("Conduting exam..");
+		this.paper = paper;
+	}
+	
+
+}

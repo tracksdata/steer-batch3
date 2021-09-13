@@ -1,0 +1,12 @@
+package com;
+
+public class Customer {
+	
+	private String custName;
+	
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

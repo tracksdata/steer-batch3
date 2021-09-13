@@ -1,0 +1,12 @@
+package com;
+
+public class Paper {
+
+	private String subject;
+
+	public Paper(String subject) {
+		System.out.println("Setting paper");
+		this.subject = subject;
+	}
+
+}

@@ -1,0 +1,9 @@
+package com;
+
+public class C3 extends C2{
+	
+	public void f1() {
+		System.out.println(">>> f1 method of C3");
+	}
+
+}

@@ -1,0 +1,16 @@
+package com;
+
+public class Exam {
+
+	private Paper paper; // has 'A'
+
+	public Paper getPaper() {
+		return paper;
+	}
+
+	public Exam(Paper paper) {
+		System.out.println("Conduting exam on " + this);
+		this.paper = paper;
+	}
+
+}

@@ -1,0 +1,9 @@
+package com;
+
+public class Account {
+	
+	public void info(Customer cust) {
+		System.out.println(">> Account:: info for "+cust.getCustName());
+	}
+
+}
