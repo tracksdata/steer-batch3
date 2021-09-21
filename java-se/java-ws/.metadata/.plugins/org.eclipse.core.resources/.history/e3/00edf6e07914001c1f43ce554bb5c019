@@ -1,9 +1,0 @@
-package com;
-
-public class CardAccount {
-	
-	public void openCardAccount() {
-		System.out.println(">>> CreditCard :: openCardAccount method");
-	}
-
-}
