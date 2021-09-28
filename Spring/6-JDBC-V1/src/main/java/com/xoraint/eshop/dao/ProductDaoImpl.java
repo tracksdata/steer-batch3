@@ -79,6 +79,27 @@ public class ProductDaoImpl {
 			return prods;
 		});
 	}
+	
+	
+	// using lamda expression
+		public Product findProductById(int prodId){
+			return jdbcTemplate.query("select * from products where product_id=?", (ResultSet rs)->{
+				
+				Product prod=null; 
+				if(rs.next()) {
+					prod= new Product();
+					prod.setProductId(rs.getInt("product_id"));
+					prod.setProductName(rs.getString("product_title"));
+					prod.setDescription(rs.getString("product_desc"));
+					prod.setImagePath(rs.getString("product_image"));
+					prod.setKeywords(rs.getString("product_keywords"));
+					prod.setPrice(rs.getDouble("product_price"));
+					prod.setQuantity(rs.getInt("product_qty"));
+					
+				}
+				return prod;
+			},prodId);
+		}
 }
 
 class ResultSetExtractorTest implements ResultSetExtractor<List<Product>> {

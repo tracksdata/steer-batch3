@@ -5,6 +5,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.xoraint.eshop.config.AppConfig;
 import com.xoraint.eshop.dao.ProductDaoImpl;
+import com.xoraint.eshop.model.Product;
 
 public class UseClass {
 
@@ -26,7 +27,13 @@ public class UseClass {
 		// using resultsetextractor
 		
 		//prodDao.getAllProductsV1().forEach(System.out::println);
-		prodDao.findAllProductsV2().forEach(System.out::println);
+		//prodDao.findAllProductsV2().forEach(System.out::println);
+		Product prod = prodDao.findProductById(28);
+		if(prod!=null) {
+			System.out.println(prod);
+		}else {
+			System.out.println("Id not foound");
+		}
 		
 
 	}
