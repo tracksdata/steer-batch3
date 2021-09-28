@@ -100,6 +100,29 @@ public class ProductDaoImpl {
 				return prod;
 			},prodId);
 		}
+		
+		
+		// using lamda expression
+				public List<Product> findProductByName(String productName){
+					return jdbcTemplate.query("select * from products where product_title like ?", (ResultSet rs)->{
+						
+						Product prod=null; 
+						List<Product> prods=new ArrayList<>();
+						while(rs.next()) {
+							prod= new Product();
+							prod.setProductId(rs.getInt("product_id"));
+							prod.setProductName(rs.getString("product_title"));
+							prod.setDescription(rs.getString("product_desc"));
+							prod.setImagePath(rs.getString("product_image"));
+							prod.setKeywords(rs.getString("product_keywords"));
+							prod.setPrice(rs.getDouble("product_price"));
+							prod.setQuantity(rs.getInt("product_qty"));
+							prods.add(prod);
+							
+						}
+						return prods;
+					},productName);
+				}
 }
 
 class ResultSetExtractorTest implements ResultSetExtractor<List<Product>> {
