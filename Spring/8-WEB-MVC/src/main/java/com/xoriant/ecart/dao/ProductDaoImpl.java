@@ -1,4 +1,4 @@
-package com.xoraint.eshop.dao;
+package com.xoriant.ecart.dao;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -12,12 +12,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
-import com.xoraint.eshop.dao.utils.DBQueries;
-import com.xoraint.eshop.model.Brand;
-import com.xoraint.eshop.model.Cart;
-import com.xoraint.eshop.model.Category;
-import com.xoraint.eshop.model.Product;
-import com.xoraint.eshop.model.User;
+import com.xoriant.ecart.dao.utils.DBQueries;
+import com.xoriant.ecart.model.Brand;
+import com.xoriant.ecart.model.Cart;
+import com.xoriant.ecart.model.Category;
+import com.xoriant.ecart.model.Product;
+import com.xoriant.ecart.model.User;
 
 @Repository
 public class ProductDaoImpl implements ProductDao {
