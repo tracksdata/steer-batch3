@@ -34,14 +34,31 @@ public class ProductDaoImpl {
 	}
 
 	/*
-	 * using Domain Objects ========================== 
-	 * 1. RowMapper 
-	 * 	  -> T mapRow(ResultSet rs, int rowNum) 
-	 * 2. RowCallbackHandler 
-	 *    -> void processRow(ResultSet rs) throws SQLException; 
-	 * 3. ResultSetExtractor 
-	 * -> T extractData(ResultSet rs)
+	 * using Domain Objects ========================== 1. RowMapper -> T
+	 * mapRow(ResultSet rs, int rowNum) 2. RowCallbackHandler -> void
+	 * processRow(ResultSet rs) throws SQLException; 3. ResultSetExtractor -> T
+	 * extractData(ResultSet rs)
 	 */
+
+	// any JDBC DML operations
+
+	// 1 . save new product
+
+	public Product save(Product product) {
+
+		String qry = "insert into products values(?,?,?,?,?,?,?,?,?)";
+
+		int res = jdbcTemplate.update(qry, product.getProductId(), product.getCategory().getCategoryId(),
+				product.getBrand().getBrandId(), product.getProductName(), product.getPrice(), product.getQuantity(),
+				product.getDescription(), product.getImagePath(), product.getKeywords());
+
+		if (res != 0) {
+			return product;
+		}
+
+		return null;
+
+	}
 
 	// 1. RowMapper
 	// ==================
@@ -59,13 +76,12 @@ public class ProductDaoImpl {
 
 		return prods;
 	}
-	
-	
+
 	// using lamda expression
-	public List<Product> findAllProductsV2(){
-		return jdbcTemplate.query("select * from products", (ResultSet rs)->{
-			List<Product> prods=new ArrayList<>();
-			while(rs.next()) {
+	public List<Product> findAllProductsV2() {
+		return jdbcTemplate.query("select * from products", (ResultSet rs) -> {
+			List<Product> prods = new ArrayList<>();
+			while (rs.next()) {
 				Product prod = new Product();
 				prod.setProductId(rs.getInt("product_id"));
 				prod.setProductName(rs.getString("product_title"));
@@ -79,50 +95,48 @@ public class ProductDaoImpl {
 			return prods;
 		});
 	}
-	
-	
+
 	// using lamda expression
-		public Product findProductById(int prodId){
-			return jdbcTemplate.query("select * from products where product_id=?", (ResultSet rs)->{
-				
-				Product prod=null; 
-				if(rs.next()) {
-					prod= new Product();
-					prod.setProductId(rs.getInt("product_id"));
-					prod.setProductName(rs.getString("product_title"));
-					prod.setDescription(rs.getString("product_desc"));
-					prod.setImagePath(rs.getString("product_image"));
-					prod.setKeywords(rs.getString("product_keywords"));
-					prod.setPrice(rs.getDouble("product_price"));
-					prod.setQuantity(rs.getInt("product_qty"));
-					
-				}
-				return prod;
-			},prodId);
-		}
-		
-		
-		// using lamda expression
-				public List<Product> findProductByName(String productName){
-					return jdbcTemplate.query("select * from products where product_title like ?", (ResultSet rs)->{
-						
-						Product prod=null; 
-						List<Product> prods=new ArrayList<>();
-						while(rs.next()) {
-							prod= new Product();
-							prod.setProductId(rs.getInt("product_id"));
-							prod.setProductName(rs.getString("product_title"));
-							prod.setDescription(rs.getString("product_desc"));
-							prod.setImagePath(rs.getString("product_image"));
-							prod.setKeywords(rs.getString("product_keywords"));
-							prod.setPrice(rs.getDouble("product_price"));
-							prod.setQuantity(rs.getInt("product_qty"));
-							prods.add(prod);
-							
-						}
-						return prods;
-					},productName);
-				}
+	public Product findProductById(int prodId) {
+		return jdbcTemplate.query("select * from products where product_id=?", (ResultSet rs) -> {
+
+			Product prod = null;
+			if (rs.next()) {
+				prod = new Product();
+				prod.setProductId(rs.getInt("product_id"));
+				prod.setProductName(rs.getString("product_title"));
+				prod.setDescription(rs.getString("product_desc"));
+				prod.setImagePath(rs.getString("product_image"));
+				prod.setKeywords(rs.getString("product_keywords"));
+				prod.setPrice(rs.getDouble("product_price"));
+				prod.setQuantity(rs.getInt("product_qty"));
+
+			}
+			return prod;
+		}, prodId);
+	}
+
+	// using lamda expression
+	public List<Product> findProductByName(String productName) {
+		return jdbcTemplate.query("select * from products where product_title like ?", (ResultSet rs) -> {
+
+			Product prod = null;
+			List<Product> prods = new ArrayList<>();
+			while (rs.next()) {
+				prod = new Product();
+				prod.setProductId(rs.getInt("product_id"));
+				prod.setProductName(rs.getString("product_title"));
+				prod.setDescription(rs.getString("product_desc"));
+				prod.setImagePath(rs.getString("product_image"));
+				prod.setKeywords(rs.getString("product_keywords"));
+				prod.setPrice(rs.getDouble("product_price"));
+				prod.setQuantity(rs.getInt("product_qty"));
+				prods.add(prod);
+
+			}
+			return prods;
+		}, productName);
+	}
 }
 
 class ResultSetExtractorTest implements ResultSetExtractor<List<Product>> {
