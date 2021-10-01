@@ -1,5 +1,7 @@
 package com.xoriant.ecart.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,19 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
+	
+
+	// list all products
+	@RequestMapping(value = "/findAllProducts")
+	public String findAllproducts(Model model){
+		
+		
+		List<Product> prods = productService.findAllProductsV2();
+		
+		model.addAttribute("products", prods);
+		
+		return "products";
+	}
 	
 	
 	@RequestMapping("/")
