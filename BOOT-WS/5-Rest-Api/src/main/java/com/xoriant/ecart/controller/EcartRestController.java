@@ -3,11 +3,14 @@ package com.xoriant.ecart.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.xoriant.ecart.model.Brand;
 import com.xoriant.ecart.model.Category;
@@ -28,7 +31,7 @@ public class EcartRestController {
 		return productService.save(product);
 	}
 	
-	@GetMapping
+	@GetMapping(produces = {"application/json" }, consumes = MediaType.ALL_VALUE)
 	public List<Product> findAllProducts(){
 		return productService.findAll();
 	}
@@ -59,7 +62,6 @@ public class EcartRestController {
 		return productService.findProductByName("%"+productName+"%");
 		
 	}
-	
 	
 	@GetMapping("/filter/price/{minPrice}/{maxPrice}")
 	public List<Product> filterProductsByPriceRange(@PathVariable int minPrice,@PathVariable int maxPrice){
