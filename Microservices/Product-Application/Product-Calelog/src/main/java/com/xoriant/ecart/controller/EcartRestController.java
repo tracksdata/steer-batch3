@@ -35,38 +35,8 @@ public class EcartRestController {
 	public List<Product> findAllProducts(){
 		return productService.findAll();
 	}
-	@GetMapping("/{productId}")
-	public Product findProductById(@PathVariable int productId) {
-		return productService.findById(productId);
-		
-	}
 	
-	@GetMapping("/brands")
-	public List<Brand> findAllBrands() {
-		return productService.findAllBrands();
-	}
 	
-	@GetMapping("/categories")
-	public List<Category> findAllCategories() {
-		return productService.findAllCatogories();
-	}
-	
-	@GetMapping("/filter/brandName{brandName}")
-	public List<Product> filterProductsByBrandName(@PathVariable String brandName){
-		return productService.filterProductsByBrandName(brandName);
-	}
-	
-	@GetMapping("/filter/productName/{productName}")
-	public List<Product> findAllPrductsByProductName(@PathVariable String productName){
-		
-		return productService.findProductByName("%"+productName+"%");
-		
-	}
-	
-	@GetMapping("/filter/price/{minPrice}/{maxPrice}")
-	public List<Product> filterProductsByPriceRange(@PathVariable int minPrice,@PathVariable int maxPrice){
-		return productService.filterProductsByMinAndMaxRange(minPrice, maxPrice);
-	}
 	
 	
 	
