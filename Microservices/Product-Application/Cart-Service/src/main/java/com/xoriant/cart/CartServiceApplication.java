@@ -1,4 +1,4 @@
-package com.xoriant.ecart;
+package com.xoriant.cart;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
