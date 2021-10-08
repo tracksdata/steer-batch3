@@ -25,16 +25,17 @@ public class CartServiceRestController {
 	
 	
 	//find all Cart Items
-	@GetMapping("/{user}")
+	@GetMapping("/findAll/{user}")
 	public List<ItemLine> findAllCartItems(@PathVariable String user) {
 		return cartService.findAll(user);
 	}
 	
-	// add item to the cart
-	@PostMapping("/{user}")
-	public ItemLine addItemToCart(@RequestBody ItemLine itemLine,@PathVariable String user) {
-		System.out.println(">>> Controller:: "+itemLine);
-		return cartService.save(user, itemLine);
+	// add item to the cart\
+	@GetMapping("/{user}/{id}/{qty}")
+	//@PostMapping("/{user}")
+	public ItemLine addItemToCart(@PathVariable int id,@PathVariable int qty,@PathVariable String user) {
+		//System.out.println(">>> Controller:: "+itemLine);
+		return cartService.save(user,id,qty);
 	}
 	
 	// clear cart of a given user
